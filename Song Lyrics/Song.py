@@ -59,15 +59,18 @@ for i in range(len(df)):
 		
 		# Getting all anchor tags representing songs (huge!!!)
 		rows 	= meta.findAll('a')
-		url 	= [x["href"] for x in rows]
-		name 	= [x.find(text=True).encode('utf-8') for x in rows]
 
-		# Simple concatenation
-		songs 	+= name
-		urls 	+= url
-		bands 	+= [df['Artist'][i]]*len(url)
-		num 	+= len(url)
+		try:
+			url 	= [x["href"] for x in rows]
+			name 	= [x.find(text=True).encode('utf-8') for x in rows]
 
+			# Simple concatenation
+			songs 	+= name
+			urls 	+= url
+			bands 	+= [df['Artist'][i]]*len(url)
+			num 	+= len(url)
+		except:
+			print("Nonetype error!")
 	# Log comment
 	print("Done for " + df['Artist'][i])
 	print("Total songs : " + str(num))
@@ -81,7 +84,7 @@ for i in range(len(df)):
 	
 
 	# Save backup and decrease memory usage every 5000 artists
-	if(i%5000 == 0 and i>0):
+	if(i%2000 == 0 and i>0):
 		
 		df1 		= pd.DataFrame({})
 		df1["Url"]	= urls
