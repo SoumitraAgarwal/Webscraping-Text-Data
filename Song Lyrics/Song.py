@@ -27,9 +27,9 @@ millis 	= int(round(time.time() * 1000))
 base 	= "http://www.lyrics.com/"
 
 # Data frame with all the artist data in Band name -> Url format
-df 		= pd.read_csv("/Data/ArtistUrl.csv")
+df 		= pd.read_csv("Data/ArtistUrl.csv")
 
-for i in range(len(df))
+for i in range(len(df)):
 	
 	print("Working for " + df['Artist'][i])
 	
