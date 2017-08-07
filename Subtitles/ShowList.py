@@ -27,8 +27,8 @@ df1 = pd.DataFrame({})
 
 html = webp.content
 soup = BeautifulSoup(html,'lxml')
-rows = soup.find('table', width_="100%")
-shows = rows.findAll('option')
+rows = soup.findAll('table')
+shows = rows[1].findAll('option')
 showNames = []
 showOpt = []
 
