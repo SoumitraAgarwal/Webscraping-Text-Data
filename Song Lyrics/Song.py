@@ -11,7 +11,7 @@ proxies = {
   'https': 'http://172.16.114.112:3128/',
 }
 
-
+millis = int(round(time.time() * 1000))
 base 	= "http://www.lyrics.com/"
 bands	= []
 songs 	= []
@@ -43,7 +43,12 @@ for i in range(len(df))
 	print("Done for " + df['Artist'][i])
 	print("Total songs : " + str(num))
 
-	if(i%1000 == 0 and i>0):
+	if(i%100 == 0 and i>0):
+		millis = int(round(time.time() * 1000))-millis
+		print("Seconds for 100 artists : " + str(millis/1000))	
+		millis = int(round(time.time() * 1000))
+	
+	if(i%5000 == 0 and i>0):
 		df1 = pd.DataFrame({})
 		df1["Song"] = songs
 		df1["Url"]	 = urls
@@ -51,4 +56,4 @@ for i in range(len(df))
 		band	= []
 		songs 	= []
 		urls 	= []
-		df1.to_csv("Data/SongData.csv", index = False)
+		df1.to_csv("Data/SongData" + str(i/5000) + ".csv", index = False)
