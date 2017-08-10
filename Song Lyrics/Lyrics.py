@@ -17,6 +17,7 @@ base 	= "http://www.lyrics.com"
 files = os.listdir("Data/Songs")
 batch = 1
 
+files.sort()
 for file in files:
 
 	print("Working for " + file)
@@ -50,16 +51,19 @@ for file in files:
 			# Basic pre processing
 			html 	= webp.content
 			soup 	= BeautifulSoup(html,'lxml')
-			metas 	= soup.find('pre', id_="lyric-body-text")
+			metas 	= soup.find('pre', class_="lyric-body")
 
-			lyric 	= metas.find(text = True)
-
+			try:
+				lyric 	= metas.find(text = True)
+			except:
+				print("Didn't work for " + data["Song"][i])
+				continue
 			lyrics.append(lyric)
 
 
 		if(i%100 == 0 and i>0):
 			millis 	= int(round(time.time() * 1000)) - millis
-			print("Took " + str(millis) + "for 2000 uploads")
+			print("Took " + str(millis) + " millis for 2000 uploads")
 			millis 	= int(round(time.time() * 1000))
 
 	df = pd.DataFrame({'Song' : song, 'Band' : artis, 'Lyrics' : lyrics})
