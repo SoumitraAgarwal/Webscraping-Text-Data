@@ -19,7 +19,7 @@ batch = 1
 
 for file in files:
 
-	printf("Working for " + file)
+	print("Working for " + file)
 	lyrics = []
 	artist = []
 	song = []
@@ -32,7 +32,7 @@ for file in files:
 		artist.append(data["Band"])
 		song.append(data["Song"])
 
-		url = data["Url"]
+		url = data["Url"][i]
 
 		if(url[:6]=="/lyric"):
 	
@@ -50,7 +50,7 @@ for file in files:
 			# Basic pre processing
 			html 	= webp.content
 			soup 	= BeautifulSoup(html,'lxml')
-			metas 	= soup.findAll('pre', id_="lyric-body-text")
+			metas 	= soup.find('pre', id_="lyric-body-text")
 
 			lyric 	= metas.find(text = True)
 
