@@ -29,9 +29,9 @@ base 	= "http://www.lyrics.com/"
 # Data frame with all the artist data in Band name -> Url format
 df 		= pd.read_csv("Data/ArtistUrl.csv")
 
-for i in range(len(df)):
+for i in range(100001,len(df)):
 	
-	print("Working for " + df['Artist'][i])
+	print("Working for " + df['Artist'][i] + ", i : " + str(i))
 	
 	# Continuous tries to avoid breaking in between and without data
 	while(True):
@@ -92,9 +92,12 @@ for i in range(len(df)):
 		df1["Band"] = bands
 
 		# Reinitialise to decrease memory use
-		band	= []
+		bands	= []
 		songs 	= []
 		urls 	= []
 
 		# Write to batch output
-		df1.to_csv("Data/SongData" + str(i/5000) + ".csv", index = False)
+		df1.to_csv("Data/SongData" + str(i/2000) + ".csv", index = False)
+
+# Write to terminal
+df1.to_csv("Data/SongData" + str(i/2000) + ".csv", index = False)
