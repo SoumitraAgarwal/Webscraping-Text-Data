@@ -61,11 +61,10 @@ for file in files:
 			lyrics.append(lyric)
 
 
-		if(i%100 == 0 and i>0):
+		if(i%1000 == 0 and i>0):
 			millis 	= int(round(time.time() * 1000)) - millis
-			print("Took " + str(millis) + " millis for 2000 uploads")
+			print("Took " + str(millis) + " millis for 100 uploads")
 			millis 	= int(round(time.time() * 1000))
-
-	df = pd.DataFrame({'Song' : song, 'Band' : artis, 'Lyrics' : lyrics})
-	df.to_csv("Data/Lyrics/LyricsBatch" + str(batch))
-	batch = batch + 1
+			df = pd.DataFrame({'Song' : song, 'Band' : artist, 'Lyrics' : lyrics})
+			df.to_csv("Data/Lyrics/LyricsBatch" + str(batch), index = False, encoding = 'utf-8')
+			batch = batch + 1

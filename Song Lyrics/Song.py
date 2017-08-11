@@ -27,9 +27,9 @@ millis 	= int(round(time.time() * 1000))
 base 	= "http://www.lyrics.com/"
 
 # Data frame with all the artist data in Band name -> Url format
-df 		= pd.read_csv("Data/ArtistUrl.csv")
+df 		= pd.read_csv("Data/Artist/ArtistUrl.csv")
 
-for i in range(100001,len(df)):
+for i in range(116001,len(df)):
 	
 	print("Working for " + df['Artist'][i] + ", i : " + str(i))
 	
@@ -97,7 +97,7 @@ for i in range(100001,len(df)):
 		urls 	= []
 
 		# Write to batch output
-		df1.to_csv("Data/SongData" + str(i/2000) + ".csv", index = False)
+		df1.to_csv("Data/Songs/SongData" + str(i/2000) + ".csv", index = False)
 
 # Write to terminal
-df1.to_csv("Data/SongData" + str(i/2000) + ".csv", index = False)
+df1.to_csv("Data/Songs/SongData" + str(i/2000) + ".csv", index = False)
