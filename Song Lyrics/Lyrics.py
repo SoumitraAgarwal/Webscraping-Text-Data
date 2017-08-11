@@ -69,7 +69,7 @@ for file in files:
 			print("Took " + str(millis) + " millis for 100 uploads")
 			millis 	= int(round(time.time() * 1000))
 			df = pd.DataFrame({'Song' : song, 'Band' : artist, 'Lyrics' : lyrics})
-			df.to_csv("Data/Lyrics/LyricsBatch" + str(batch), index = False, encoding = 'utf-8')
+			df.to_csv("Data/Lyrics/LyricsBatch" + str(batch) + ".csv", index = False, encoding = 'utf-8')
 			batch = batch + 1
 			lyrics = []
 			artist = []
