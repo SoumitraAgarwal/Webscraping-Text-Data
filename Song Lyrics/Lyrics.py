@@ -30,13 +30,12 @@ for file in files:
 
 	for i in range(len(data["Url"])):
 
-		artist.append(data["Band"])
-		song.append(data["Song"])
-
 		url = data["Url"][i]
 
 		if(url[:6]=="/lyric"):
-	
+			
+			
+
 			# Continuous tries to avoid breaking in between and without data
 			while(True):
 				try:
@@ -55,16 +54,23 @@ for file in files:
 
 			try:
 				lyric 	= metas.find(text = True)
+
+				artist.append(data["Band"])
+				song.append(data["Song"])
+				lyrics.append(lyric)
 			except:
 				print("Didn't work for " + data["Song"][i])
 				continue
-			lyrics.append(lyric)
 
 
 		if(i%1000 == 0 and i>0):
+
 			millis 	= int(round(time.time() * 1000)) - millis
 			print("Took " + str(millis) + " millis for 100 uploads")
 			millis 	= int(round(time.time() * 1000))
 			df = pd.DataFrame({'Song' : song, 'Band' : artist, 'Lyrics' : lyrics})
 			df.to_csv("Data/Lyrics/LyricsBatch" + str(batch), index = False, encoding = 'utf-8')
 			batch = batch + 1
+			lyrics = []
+			artist = []
+			song = []
