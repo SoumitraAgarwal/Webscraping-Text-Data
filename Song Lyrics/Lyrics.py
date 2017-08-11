@@ -55,8 +55,8 @@ for file in files:
 			try:
 				lyric 	= metas.find(text = True)
 
-				artist.append(data["Band"])
-				song.append(data["Song"])
+				artist.append(data["Band"][i])
+				song.append(data["Song"][i])
 				lyrics.append(lyric)
 			except:
 				print("Didn't work for " + data["Song"][i])
