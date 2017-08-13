@@ -15,10 +15,10 @@ proxies = {
 
 base 	= "http://www.lyrics.com"
 files = os.listdir("Data/Songs")
-batch = 1
+batch = 76
 
 files.sort()
-for file in files:
+for file in files[8:]:
 
 	print("Working for " + file)
 	lyrics = []
@@ -28,13 +28,15 @@ for file in files:
 	data = pd.read_csv("Data/Songs/" + file)
 	millis 	= int(round(time.time() * 1000))
 
-	for i in range(len(data["Url"])):
+	start = 0
+	if(file == files[8]):
+		start = 3001
+
+	for i in range(start,len(data["Url"])):
 
 		url = data["Url"][i]
 
 		if(url[:6]=="/lyric"):
-			
-			
 
 			# Continuous tries to avoid breaking in between and without data
 			while(True):
@@ -66,7 +68,7 @@ for file in files:
 		if(i%1000 == 0 and i>0):
 
 			millis 	= int(round(time.time() * 1000)) - millis
-			print("Took " + str(millis) + " millis for 100 uploads")
+			print("Took " + str(1.0*millis/60000) + " minutes for 1000 uploads")
 			millis 	= int(round(time.time() * 1000))
 			df = pd.DataFrame({'Song' : song, 'Band' : artist, 'Lyrics' : lyrics})
 			df.to_csv("Data/Lyrics/LyricsBatch" + str(batch) + ".csv", index = False, encoding = 'utf-8')
@@ -74,3 +76,14 @@ for file in files:
 			lyrics = []
 			artist = []
 			song = []
+
+	millis 	= int(round(time.time() * 1000)) - millis
+	print("Took " + str(1.0*millis/60000) + " minutes for " + str(len(data["Url"])%1000) + " uploads")
+	millis 	= int(round(time.time() * 1000))
+	df = pd.DataFrame({'Song' : song, 'Band' : artist, 'Lyrics' : lyrics})
+	df.to_csv("Data/Lyrics/LyricsBatch" + str(batch) + ".csv", index = False, encoding = 'utf-8')
+	batch = batch + 1
+	lyrics = []
+	artist = []
+	song = []
+	
