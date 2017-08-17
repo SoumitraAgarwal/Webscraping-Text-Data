@@ -9,16 +9,16 @@ from bs4 import BeautifulSoup
 
 # Initialisations for proxy and other metas to be used later
 proxies = {
-  'http': 'http://172.16.114.218:3128/',
-  'https': 'http://172.16.114.218:3128/',
+  'http': 'http://172.16.114.112:3128/',
+  'https': 'http://172.16.114.112:3128/',
 }
 
 base 	= "http://www.lyrics.com"
 files = os.listdir("Data/Songs")
-batch = 243
+batch = 282
 
 files.sort()
-for file in files[25:]:
+for file in files[29:30]:
 
 	print("Working for " + file)
 	lyrics = []
@@ -29,8 +29,8 @@ for file in files[25:]:
 	millis 	= int(round(time.time() * 1000))
 
 	start = 0
-	if(file == files[24]):
-		start = 7001
+	if(file == files[28]):
+		start = 8001
 
 	for i in range(start,len(data["Url"])):
 
