@@ -56,6 +56,6 @@ def get_rhymes(Lasts):
 	mapRhymes = {}
 	for i in range(len(Lasts)):
 		if(len(Lasts[i])>1):
-			ending 				=  Lasts[i][len(Lasts[i]) - 2:]
+			ending 				=  Lasts[i][len(Lasts[i]) - 3:]
 			mapRhymes[ending] 	= mapRhymes.get(ending, []) + [Lasts[i]]
 	return(mapRhymes)

@@ -17,7 +17,7 @@ def write_poem(Firsts, Centres, Lasts, mapFirsts, mapCentres, mapLasts, mapRhyme
 				word1 	= random.choice(mapLasts[wordl])
 				if(word1 in mapCentres[word]):
 					line1 	= line1 + " " + word1 + " "  + wordl + ",\n"
-					endword = random.choice(mapRhymes[wordl[len(wordl)-2:]])
+					endword = random.choice(mapRhymes[wordl[len(wordl)-3:]])
 					break
 		
 		process.log(line1, millis, 0)
@@ -35,7 +35,7 @@ def write_poem(Firsts, Centres, Lasts, mapFirsts, mapCentres, mapLasts, mapRhyme
 				word1 	= random.choice(mapLasts[wordl])
 				if(word1 in mapCentres[word]):
 					line1 	= line1 + " " + word1 + " "  + wordl + ",\n"
-					endword = random.choice(mapRhymes[wordl[len(wordl)-2:]])
+					endword = random.choice(mapRhymes[wordl[len(wordl)-3:]])
 					break
 
 		process.log(line1, millis, 0)
