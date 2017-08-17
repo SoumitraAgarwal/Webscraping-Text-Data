@@ -30,7 +30,7 @@ def write_poem(Firsts, Centres, Lasts, mapFirsts, mapCentres, mapLasts, mapRhyme
 			line1 	= line1 + " " + word
 
 		while(True):
-			wordl = random.choice(mapRhymes[wordl[len(wordl)-2:]])
+			wordl = random.choice(mapRhymes[wordl[len(wordl)-3:]])
 			if(len(wordl)>1):
 				word1 	= random.choice(mapLasts[wordl])
 				if(word1 in mapCentres[word]):
